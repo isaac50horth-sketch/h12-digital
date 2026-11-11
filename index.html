@@ -4,262 +4,324 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>H12 Digital — Formations & Produits Digitaux Premium</title>
-  <meta name="description" content="Formations, templates et systèmes digitaux premium pour créer un business autonome et rentable." />
+  <meta name="description" content="Boutique digitale premium : formations professionnelles, templates, ebooks et outils pour créer un business autonome avec des revenus récurrents." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #07070a; --bg-elevated: #0e0e13; --bg-card: #121218;
-      --border: rgba(255,255,255,0.08); --border-hover: rgba(255,255,255,0.16);
-      --text: #f4f4f5; --text-muted: #a1a1aa; --text-dim: #71717a;
-      --accent: #d4a017; --accent-soft: rgba(212, 160, 23, 0.12); --accent-glow: rgba(212, 160, 23, 0.25);
-      --radius: 16px; --font: 'Inter', system-ui, sans-serif; --font-display: 'Playfair Display', Georgia, serif;
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: { 950: '#0a0a0b', 900: '#111113', 800: '#18181b', 700: '#27272a' },
+            gold: { 400: '#f5c542', 500: '#eab308', 600: '#ca8a04' },
+            accent: { 400: '#a78bfa', 500: '#8b5cf6' }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Instrument Serif', 'Georgia', 'serif']
+          }
+        }
+      }
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
-    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(7,7,10,0.75); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.03em; display: flex; align-items: center; gap: 8px; }
-    .logo span { background: linear-gradient(135deg, #f5d76e, #d4a017); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    nav { display: flex; align-items: center; gap: 32px; }
-    nav a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
-    nav a:hover { color: var(--text); }
-    .cart-btn { position: relative; width: 42px; height: 42px; border-radius: 12px; background: var(--bg-elevated); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text); transition: all 0.2s; }
-    .cart-btn:hover { border-color: var(--border-hover); background: var(--bg-card); }
-    .cart-count { position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; background: var(--accent); color: #000; font-size: 0.7rem; font-weight: 700; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .cart-count:empty, .cart-count[data-count="0"] { display: none; }
-    .hero { padding: 160px 0 100px; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%); pointer-events: none; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: var(--accent-soft); border: 1px solid rgba(212,160,23,0.25); border-radius: 100px; font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 28px; }
-    .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5.5vw, 4.2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; max-width: 780px; margin-bottom: 24px; }
-    .hero h1 em { font-style: normal; background: linear-gradient(135deg, #f5d76e 0%, #d4a017 50%, #b8860b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-sub { font-size: 1.15rem; color: var(--text-muted); max-width: 540px; margin-bottom: 40px; line-height: 1.7; }
-    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 56px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: 12px; font-weight: 600; font-size: 0.95rem; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
-    .btn-primary { background: linear-gradient(135deg, #e8c547, #d4a017); color: #0a0a0a; box-shadow: 0 0 0 1px rgba(212,160,23,0.4), 0 8px 24px -4px rgba(212,160,23,0.35); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(212,160,23,0.5), 0 12px 32px -4px rgba(212,160,23,0.45); }
-    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-ghost:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.03); }
-    .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
-    .stat { display: flex; flex-direction: column; gap: 2px; }
-    .stat-value { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
-    .stat-label { font-size: 0.85rem; color: var(--text-dim); }
-    .section { padding: 100px 0; }
-    .section-header { text-align: center; margin-bottom: 56px; }
-    .section-header h2 { font-family: var(--font-display); font-size: clamp(1.9rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
-    .section-header p { color: var(--text-muted); font-size: 1.05rem; max-width: 480px; margin: 0 auto; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
-    .product-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; }
-    .product-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5); }
-    .product-image { height: 180px; background: linear-gradient(145deg, #1a1a22 0%, #0f0f14 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .product-image::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, var(--accent-soft), transparent 60%); }
-    .product-icon { font-size: 3.2rem; position: relative; z-index: 1; }
-    .product-badge { position: absolute; top: 14px; left: 14px; padding: 4px 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); border-radius: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); z-index: 2; }
-    .product-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
-    .product-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-    .product-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; flex: 1; line-height: 1.55; }
-    .product-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .price-current { font-size: 1.35rem; font-weight: 800; }
-    .price-old { font-size: 0.85rem; color: var(--text-dim); text-decoration: line-through; }
-    .btn-sm { padding: 10px 18px; font-size: 0.875rem; border-radius: 10px; }
-    .membership { background: linear-gradient(180deg, transparent 0%, rgba(212,160,23,0.04) 50%, transparent 100%); }
-    .membership-card { background: var(--bg-card); border: 1px solid rgba(212,160,23,0.2); border-radius: 24px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; position: relative; overflow: hidden; }
-    .membership-card::before { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at right, var(--accent-soft), transparent 70%); pointer-events: none; }
-    .membership-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px; }
-    .membership-card h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; margin-bottom: 16px; }
-    .membership-card p { color: var(--text-muted); margin-bottom: 28px; line-height: 1.65; }
-    .membership-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-    .membership-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; }
-    .membership-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
-    .price-big { font-size: 2.8rem; font-weight: 800; line-height: 1; }
-    .price-big span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .step { text-align: center; padding: 32px 20px; }
-    .step-num { width: 48px; height: 48px; border-radius: 14px; background: var(--accent-soft); border: 1px solid rgba(212,160,23,0.2); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--accent); margin: 0 auto 20px; font-size: 1.1rem; }
-    .step h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-    .step p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.55; }
-    footer { border-top: 1px solid var(--border); padding: 48px 0 32px; margin-top: 40px; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
-    .footer-brand { max-width: 280px; }
-    .footer-brand .logo { margin-bottom: 12px; }
-    .footer-brand p { font-size: 0.9rem; color: var(--text-dim); }
-    .footer-links { display: flex; gap: 48px; }
-    .footer-col h5 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 16px; }
-    .footer-col a { display: block; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 10px; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--text); }
-    .footer-bottom { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: var(--text-dim); }
-    .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; opacity: 0; visibility: hidden; transition: all 0.3s; }
-    .cart-overlay.open { opacity: 1; visibility: visible; }
-    .cart-drawer { position: fixed; top: 0; right: 0; width: 100%; max-width: 420px; height: 100%; background: var(--bg-elevated); border-left: 1px solid var(--border); z-index: 201; transform: translateX(100%); transition: transform 0.35s; display: flex; flex-direction: column; }
-    .cart-drawer.open { transform: translateX(0); }
-    .cart-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border); }
-    .cart-header h3 { font-size: 1.1rem; font-weight: 700; }
-    .cart-close { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
-    .cart-items { flex: 1; overflow-y: auto; padding: 20px 24px; }
-    .cart-empty { text-align: center; padding: 60px 20px; color: var(--text-dim); }
-    .cart-item { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-    .cart-item-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
-    .cart-item-price { font-size: 0.9rem; color: var(--accent); font-weight: 600; }
-    .cart-item-remove { color: var(--text-dim); font-size: 0.8rem; margin-top: 6px; }
-    .cart-footer { padding: 20px 24px 28px; border-top: 1px solid var(--border); }
-    .cart-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 1.05rem; }
-    .cart-total strong { font-size: 1.3rem; font-weight: 800; }
-    .cart-checkout { width: 100%; padding: 16px; font-size: 1rem; }
-    .cart-note { text-align: center; font-size: 0.8rem; color: var(--text-dim); margin-top: 12px; }
-    .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--bg-card); border: 1px solid var(--border); padding: 14px 24px; border-radius: 12px; font-size: 0.9rem; font-weight: 500; z-index: 300; opacity: 0; transition: all 0.35s; box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
-    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-    @media (max-width: 900px) { .membership-card { grid-template-columns: 1fr; padding: 36px 28px; } .steps { grid-template-columns: 1fr; } nav { display: none; } }
-    @media (max-width: 600px) { .hero { padding: 130px 0 70px; } .products-grid { grid-template-columns: 1fr; } }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0a0a0b; }
+    .font-display { font-family: 'Instrument Serif', Georgia, serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #f5c542 0%, #eab308 40%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass {
+      background: rgba(24, 24, 27, 0.72);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .card-glow {
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 20px 50px -20px rgba(0,0,0,0.6);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .card-glow:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 0 1px rgba(245, 197, 66, 0.25), 0 28px 60px -18px rgba(0,0,0,0.75);
+      border-color: rgba(245, 197, 66, 0.2);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #f5c542, #eab308);
+      color: #0a0a0b;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+    .btn-gold:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px -6px rgba(234, 179, 8, 0.45);
+    }
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 70%);
+    }
+    .noise {
+      position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .cart-badge {
+      min-width: 1.15rem; height: 1.15rem;
+      font-size: 0.65rem; font-weight: 700;
+    }
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    .module-item { border-left: 2px solid rgba(245, 197, 66, 0.25); }
+    #cart-panel { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+    #cart-panel.open { transform: translateX(0); }
+    #cart-overlay { transition: opacity 0.25s ease; }
   </style>
 </head>
-<body>
-  <header>
-    <div class="container header-inner">
-      <a href="/" class="logo">H12 <span>Digital</span></a>
-      <nav>
-        <a href="#produits">Produits</a>
-        <a href="#abonnement">Abonnement</a>
-        <a href="#comment">Comment ça marche</a>
-      </nav>
-      <button class="cart-btn" id="cartBtn" aria-label="Panier">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6L5 2H2"/></svg>
-        <span class="cart-count" id="cartCount" data-count="0">0</span>
-      </button>
+<body class="bg-ink-950 text-zinc-100 antialiased">
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 inset-x-0 z-40 glass">
+    <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-400 to-accent-500 flex items-center justify-center text-ink-950 font-bold text-sm">H12</span>
+        <span class="font-semibold tracking-tight">H12 Digital</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+        <a href="#formations" class="hover:text-white transition">Formations</a>
+        <a href="#abonnement" class="hover:text-white transition">Abonnement</a>
+        <a href="#pourquoi" class="hover:text-white transition">Pourquoi nous</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="cart-btn" class="relative p-2.5 rounded-full hover:bg-white/5 transition" aria-label="Panier">
+          <i class="fa-solid fa-bag-shopping text-zinc-300"></i>
+          <span id="cart-count" class="cart-badge absolute -top-0.5 -right-0.5 bg-gold-500 text-ink-950 rounded-full flex items-center justify-center px-1 hidden">0</span>
+        </button>
+        <a href="#abonnement" class="btn-gold hidden sm:inline-flex items-center px-4 py-2 rounded-full text-sm">Accès Pro</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="relative min-h-[92vh] flex items-center pt-16 overflow-hidden">
+    <div class="absolute inset-0 hero-grid"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-accent-500/10 via-transparent to-ink-950"></div>
+    <div class="relative max-w-6xl mx-auto px-5 py-20 md:py-28 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-zinc-300 mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Formations professionnelles · Paiement sécurisé Stripe
+      </div>
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tight mb-6">
+        Des formations qui<br />
+        <span class="gradient-text">valent vraiment le prix</span>
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Crée, package et vends des produits digitaux de niveau pro.
+        Revenus récurrents grâce aux abonnements. Un business qui apprend et grandit tout seul.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="#formations" class="btn-gold inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-base">
+          Voir les formations <i class="fa-solid fa-arrow-right text-sm"></i>
+        </a>
+        <a href="#abonnement" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-base border border-white/15 hover:bg-white/5 transition">
+          Abonnement mensuel
+        </a>
+      </div>
+      <div class="mt-14 flex flex-wrap justify-center gap-8 md:gap-14 text-left">
+        <div>
+          <div class="text-2xl font-semibold text-white">4</div>
+          <div class="text-sm text-zinc-500">Formations premium</div>
+        </div>
+        <div>
+          <div class="text-2xl font-semibold text-white">Accès à vie</div>
+          <div class="text-sm text-zinc-500">+ mises à jour incluses</div>
+        </div>
+        <div>
+          <div class="text-2xl font-semibold text-white">Stripe</div>
+          <div class="text-sm text-zinc-500">Paiements sécurisés</div>
+        </div>
+      </div>
     </div>
   </header>
-  <section class="hero">
-    <div class="container">
-      <div class="hero-badge">Formations & systèmes digitaux premium</div>
-      <h1>Crée un business <em>autonome</em> qui génère des revenus en boucle</h1>
-      <p class="hero-sub">Formations professionnelles, templates prêts à l’emploi et systèmes complets. Qualité réelle. Résultats concrets. Paiement sécurisé.</p>
-      <div class="hero-cta">
-        <a href="#produits" class="btn btn-primary">Voir les produits →</a>
-        <a href="#abonnement" class="btn btn-ghost">Découvrir l’abonnement</a>
+
+  <!-- Formations -->
+  <section id="formations" class="py-24 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="text-center mb-14">
+        <p class="text-gold-500 text-sm font-medium tracking-wide uppercase mb-3">Catalogue</p>
+        <h2 class="font-display text-4xl md:text-5xl mb-4">Formations vraiment professionnelles</h2>
+        <p class="text-zinc-400 max-w-xl mx-auto">Chaque module est pensé pour un rendu premium : structure claire, livrables concrets, et un niveau qui justifie l’investissement.</p>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><div class="stat-value">4.9/5</div><div class="stat-label">Satisfaction clients</div></div>
-        <div class="stat"><div class="stat-value">+1 200</div><div class="stat-label">Acheteurs satisfaits</div></div>
-        <div class="stat"><div class="stat-value">Accès immédiat</div><div class="stat-label">Après paiement</div></div>
+
+      <div class="grid md:grid-cols-2 gap-6" id="products-grid">
+        <!-- Product cards injected by JS -->
       </div>
     </div>
   </section>
-  <section class="section" id="produits">
-    <div class="container">
-      <div class="section-header">
-        <h2>Produits digitaux premium</h2>
-        <p>Des formations et outils conçus pour un rendu professionnel et des résultats mesurables.</p>
+
+  <!-- Abonnement -->
+  <section id="abonnement" class="py-24 border-t border-white/5 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-accent-500/8 via-transparent to-gold-500/5"></div>
+    <div class="relative max-w-6xl mx-auto px-5">
+      <div class="text-center mb-14">
+        <p class="text-gold-500 text-sm font-medium tracking-wide uppercase mb-3">Revenus en boucle</p>
+        <h2 class="font-display text-4xl md:text-5xl mb-4">Abonnement Académie Pro</h2>
+        <p class="text-zinc-400 max-w-xl mx-auto">Accès continu aux nouvelles formations, templates et outils. Un système qui se développe et s’améliore chaque mois.</p>
       </div>
-      <div class="products-grid" id="productsGrid"></div>
-    </div>
-  </section>
-  <section class="section membership" id="abonnement">
-    <div class="container">
-      <div class="membership-card">
-        <div>
-          <div class="membership-label">Revenus récurrents</div>
-          <h3>H12 Club — Abonnement</h3>
-          <p>Accès complet à toutes les formations, nouveaux contenus chaque mois, templates exclusifs et mises à jour prioritaires.</p>
-          <ul class="membership-features">
-            <li>Toutes les formations actuelles + futures</li>
-            <li>Nouveaux templates & prompts chaque mois</li>
-            <li>Accès prioritaire aux mises à jour</li>
-            <li>Communauté privée (bientôt)</li>
-            <li>Annulable à tout moment</li>
+
+      <div class="max-w-lg mx-auto">
+        <div class="card-glow rounded-2xl border border-white/10 bg-ink-900 p-8 md:p-10">
+          <div class="flex items-baseline gap-1 mb-2">
+            <span class="text-4xl font-bold tracking-tight">29€</span>
+            <span class="text-zinc-500">/ mois</span>
+          </div>
+          <p class="text-zinc-400 text-sm mb-8">Sans engagement · Annulable à tout moment</p>
+          <ul class="space-y-3.5 mb-10 text-sm">
+            <li class="flex gap-3"><i class="fa-solid fa-check text-gold-500 mt-0.5"></i><span>Toutes les formations actuelles + futures</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-gold-500 mt-0.5"></i><span>Templates, checklists et scripts de vente</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-gold-500 mt-0.5"></i><span>Mises à jour automatiques du contenu</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-gold-500 mt-0.5"></i><span>Priorité sur les nouvelles ressources</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-gold-500 mt-0.5"></i><span>Communauté & support prioritaires</span></li>
           </ul>
-        </div>
-        <div style="text-align: center; position: relative; z-index: 1;">
-          <div class="price-big">29€ <span>/ mois</span></div>
-          <p style="color: var(--text-dim); font-size: 0.9rem; margin: 12px 0 28px;">ou 249€ / an (économise 2 mois)</p>
-          <button class="btn btn-primary" style="width: 100%; max-width: 280px;" onclick="buySubscription('monthly')">S’abonner maintenant</button>
-          <button class="btn btn-ghost" style="width: 100%; max-width: 280px; margin-top: 10px;" onclick="buySubscription('yearly')">Choisir l’annuel</button>
+          <a id="btn-sub" href="#" target="_blank" rel="noopener"
+             class="btn-gold w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-base">
+            S’abonner maintenant <i class="fa-solid fa-arrow-right text-sm"></i>
+          </a>
+          <p class="text-center text-xs text-zinc-500 mt-4">Paiement sécurisé via Stripe · Accès immédiat</p>
         </div>
       </div>
     </div>
   </section>
-  <section class="section" id="comment">
-    <div class="container">
-      <div class="section-header"><h2>Comment ça marche</h2><p>Simple, rapide et 100 % digital.</p></div>
-      <div class="steps">
-        <div class="step"><div class="step-num">1</div><h4>Choisis ton produit</h4><p>Formation, pack templates ou abonnement. Ajoute au panier en un clic.</p></div>
-        <div class="step"><div class="step-num">2</div><h4>Paiement sécurisé</h4><p>Stripe gère le paiement. Cartes, Apple Pay, Google Pay.</p></div>
-        <div class="step"><div class="step-num">3</div><h4>Accès immédiat</h4><p>Reçois ton accès par email et commence tout de suite.</p></div>
+
+  <!-- Pourquoi -->
+  <section id="pourquoi" class="py-24 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="text-center mb-14">
+        <p class="text-gold-500 text-sm font-medium tracking-wide uppercase mb-3">Différence</p>
+        <h2 class="font-display text-4xl md:text-5xl mb-4">Conçu pour que ça vaille le prix</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="rounded-xl border border-white/8 bg-ink-900/60 p-6">
+          <div class="w-10 h-10 rounded-lg bg-gold-500/15 text-gold-400 flex items-center justify-center mb-4">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <h3 class="font-semibold mb-2">Rendu professionnel</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed">Modules structurés, livrables concrets, design soigné. Les clients sentent immédiatement la qualité.</p>
+        </div>
+        <div class="rounded-xl border border-white/8 bg-ink-900/60 p-6">
+          <div class="w-10 h-10 rounded-lg bg-accent-500/15 text-accent-400 flex items-center justify-center mb-4">
+            <i class="fa-solid fa-rotate"></i>
+          </div>
+          <h3 class="font-semibold mb-2">Revenus récurrents</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed">L’abonnement Pro crée un flux stable. Le contenu s’enrichit chaque mois sans que tu aies à tout refaire.</p>
+        </div>
+        <div class="rounded-xl border border-white/8 bg-ink-900/60 p-6">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-4">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <h3 class="font-semibold mb-2">Système autonome</h3>
+          <p class="text-sm text-zinc-400 leading-relaxed">Apprends à construire un business qui se développe, s’améliore et génère des ventes en boucle.</p>
+        </div>
       </div>
     </div>
   </section>
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand"><div class="logo">H12 <span>Digital</span></div><p>Produits digitaux premium pour entrepreneurs qui veulent des résultats concrets.</p></div>
-        <div class="footer-links">
-          <div class="footer-col"><h5>Produits</h5><a href="#produits">Formations</a><a href="#produits">Templates</a><a href="#abonnement">Abonnement</a></div>
-          <div class="footer-col"><h5>Support</h5><a href="mailto:support@h12.digital">Contact</a></div>
-        </div>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-24 border-t border-white/5">
+    <div class="max-w-2xl mx-auto px-5">
+      <h2 class="font-display text-3xl md:text-4xl text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        <details class="group rounded-xl border border-white/8 bg-ink-900/50 open:bg-ink-900">
+          <summary class="px-5 py-4 flex justify-between items-center font-medium">
+            Comment j’accède à ma formation après l’achat ?
+            <i class="fa-solid fa-chevron-down text-zinc-500 text-xs group-open:rotate-180 transition"></i>
+          </summary>
+          <div class="px-5 pb-4 text-sm text-zinc-400 leading-relaxed">
+            Après le paiement Stripe, tu reçois un email avec le lien d’accès immédiat. Les formations sont hébergées de façon privée et restent accessibles à vie (achats one-shot) ou pendant ton abonnement.
+          </div>
+        </details>
+        <details class="group rounded-xl border border-white/8 bg-ink-900/50">
+          <summary class="px-5 py-4 flex justify-between items-center font-medium">
+            Puis-je annuler l’abonnement ?
+            <i class="fa-solid fa-chevron-down text-zinc-500 text-xs group-open:rotate-180 transition"></i>
+          </summary>
+          <div class="px-5 pb-4 text-sm text-zinc-400 leading-relaxed">
+            Oui, à tout moment depuis ton espace Stripe ou en nous contactant. Aucun engagement long terme.
+          </div>
+        </details>
+        <details class="group rounded-xl border border-white/8 bg-ink-900/50">
+          <summary class="px-5 py-4 flex justify-between items-center font-medium">
+            Les paiements sont-ils sécurisés ?
+            <i class="fa-solid fa-chevron-down text-zinc-500 text-xs group-open:rotate-180 transition"></i>
+          </summary>
+          <div class="px-5 pb-4 text-sm text-zinc-400 leading-relaxed">
+            Oui. Tous les paiements passent par Stripe (norme PCI). Nous ne stockons jamais tes données bancaires.
+          </div>
+        </details>
+        <details class="group rounded-xl border border-white/8 bg-ink-900/50">
+          <summary class="px-5 py-4 flex justify-between items-center font-medium">
+            Y a-t-il une garantie ?
+            <i class="fa-solid fa-chevron-down text-zinc-500 text-xs group-open:rotate-180 transition"></i>
+          </summary>
+          <div class="px-5 pb-4 text-sm text-zinc-400 leading-relaxed">
+            Oui — 14 jours satisfait ou remboursé sur les formations one-shot si le contenu ne correspond pas à la description.
+          </div>
+        </details>
       </div>
-      <div class="footer-bottom"><span>© 2026 H12 Digital. Tous droits réservés.</span><span>Paiements sécurisés par Stripe</span></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-12">
+    <div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2.5">
+        <span class="w-7 h-7 rounded-md bg-gradient-to-br from-gold-400 to-accent-500 flex items-center justify-center text-ink-950 font-bold text-xs">H12</span>
+        <span class="text-sm text-zinc-400">H12 Digital · Formations premium</span>
+      </div>
+      <p class="text-xs text-zinc-600">Paiements sécurisés via Stripe. © 2026 H12 Digital.</p>
     </div>
   </footer>
-  <div class="cart-overlay" id="cartOverlay"></div>
-  <aside class="cart-drawer" id="cartDrawer">
-    <div class="cart-header"><h3>Ton panier</h3><button class="cart-close" id="cartClose">✕</button></div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="cart-footer" id="cartFooter" style="display:none;">
-      <div class="cart-total"><span>Total</span><strong id="cartTotal">0€</strong></div>
-      <button class="btn btn-primary cart-checkout" id="checkoutBtn">Payer avec Stripe →</button>
-      <p class="cart-note">Paiement sécurisé · Accès immédiat</p>
+
+  <!-- Cart panel -->
+  <div id="cart-overlay" class="fixed inset-0 bg-black/60 z-50 opacity-0 pointer-events-none"></div>
+  <aside id="cart-panel" class="fixed top-0 right-0 h-full w-full max-w-md bg-ink-900 border-l border-white/10 z-50 transform translate-x-full flex flex-col shadow-2xl">
+    <div class="flex items-center justify-between px-5 h-16 border-b border-white/8">
+      <h3 class="font-semibold">Panier</h3>
+      <button id="cart-close" class="p-2 rounded-lg hover:bg-white/5" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
+    <div class="border-t border-white/8 p-5 space-y-3">
+      <div class="flex justify-between text-sm">
+        <span class="text-zinc-400">Total</span>
+        <span id="cart-total" class="font-semibold">0€</span>
+      </div>
+      <p class="text-xs text-zinc-500">Chaque produit s’ouvre dans Stripe Checkout (paiement sécurisé). Tu peux aussi acheter individuellement depuis la fiche.</p>
+      <button id="cart-checkout" class="btn-gold w-full py-3 rounded-full text-sm disabled:opacity-40 disabled:pointer-events-none" disabled>
+        Payer avec Stripe
+      </button>
     </div>
   </aside>
-  <div class="toast" id="toast"></div>
-  <script>
-    const PRODUCTS = [
-      { id: 'formation-autonome', title: 'Formation Complète — Système Autonome', desc: 'La formation phare pour créer, automatiser et scaler un business digital rentable avec l’IA. Modules vidéo HD, prompts exclusifs, templates et plan d’action.', price: 297, oldPrice: 497, badge: 'Bestseller', icon: '🚀', paymentLink: 'https://buy.stripe.com/test_REPLACE_FORMATION' },
-      { id: 'pack-templates', title: 'Pack Templates Pro Business', desc: '50+ templates Notion, Canva, prompts IA et checklists prêts à l’emploi pour lancer et gérer ton business en un temps record.', price: 47, oldPrice: 97, badge: 'Populaire', icon: '📦', paymentLink: 'https://buy.stripe.com/test_REPLACE_TEMPLATES' },
-      { id: 'ebook-prompts', title: 'Ebook + Banque de Prompts IA', desc: 'Le guide pratique + 120 prompts business ultra-performants pour marketing, contenu, offre et automatisation.', price: 27, oldPrice: 49, badge: 'Nouveau', icon: '📘', paymentLink: 'https://buy.stripe.com/test_REPLACE_EBOOK' },
-      { id: 'systeme-offre', title: 'Système Offre High-Ticket', desc: 'Méthode complète pour créer une offre irrésistible, positionner ton expertise et vendre à 1 000€+ sans te brûler.', price: 147, oldPrice: 247, badge: 'Premium', icon: '💎', paymentLink: 'https://buy.stripe.com/test_REPLACE_OFFRE' }
-    ];
-    const SUBSCRIPTION_LINKS = { monthly: 'https://buy.stripe.com/test_REPLACE_SUB_MONTHLY', yearly: 'https://buy.stripe.com/test_REPLACE_SUB_YEARLY' };
-    let cart = JSON.parse(localStorage.getItem('h12_cart') || '[]');
-    function saveCart() { localStorage.setItem('h12_cart', JSON.stringify(cart)); renderCart(); updateCartCount(); }
-    function addToCart(id) {
-      const p = PRODUCTS.find(x => x.id === id); if (!p) return;
-      if (cart.find(i => i.id === id)) { showToast('Déjà dans le panier'); return; }
-      cart.push({ id: p.id, title: p.title, price: p.price, paymentLink: p.paymentLink });
-      saveCart(); showToast('Ajouté au panier ✓'); openCart();
-    }
-    function removeFromCart(id) { cart = cart.filter(i => i.id !== id); saveCart(); }
-    function updateCartCount() { const el = document.getElementById('cartCount'); el.textContent = cart.length; el.dataset.count = cart.length; }
-    function renderCart() {
-      const c = document.getElementById('cartItems'), f = document.getElementById('cartFooter');
-      if (!cart.length) { c.innerHTML = '<div class="cart-empty"><div style="font-size:2.5rem;opacity:0.4">🛒</div><p>Ton panier est vide</p></div>'; f.style.display = 'none'; return; }
-      c.innerHTML = cart.map(i => '<div class="cart-item"><div><div class="cart-item-title">'+i.title+'</div><div class="cart-item-price">'+i.price+'€</div><button class="cart-item-remove" onclick="removeFromCart(\''+i.id+'\')">Retirer</button></div></div>').join('');
-      document.getElementById('cartTotal').textContent = cart.reduce((s,i)=>s+i.price,0)+'€'; f.style.display = 'block';
-    }
-    function openCart() { document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeCart() { document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); document.body.style.overflow = ''; }
-    function checkout() {
-      if (!cart.length) return;
-      const first = cart[0];
-      if (first.paymentLink && !first.paymentLink.includes('REPLACE')) window.location.href = first.paymentLink;
-      else alert('⚠️ Crée tes Payment Links dans dashboard.stripe.com (compte H12 live) et remplace les URLs dans le code.');
-    }
-    function buySubscription(period) {
-      const link = SUBSCRIPTION_LINKS[period];
-      if (link && !link.includes('REPLACE')) window.location.href = link;
-      else alert('⚠️ Crée un Payment Link récurrent dans Stripe (compte H12) et remplace SUBSCRIPTION_LINKS.');
-    }
-    function showToast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2400); }
-    function renderProducts() {
-      document.getElementById('productsGrid').innerHTML = PRODUCTS.map(p => '<article class="product-card"><div class="product-image"><span class="product-badge">'+p.badge+'</span><span class="product-icon">'+p.icon+'</span></div><div class="product-body"><h3 class="product-title">'+p.title+'</h3><p class="product-desc">'+p.desc+'</p><div class="product-meta"><div><span class="price-current">'+p.price+'€</span> '+(p.oldPrice?'<span class="price-old">'+p.oldPrice+'€</span>':'')+'</div><button class="btn btn-primary btn-sm" onclick="addToCart(\''+p.id+'\')">Ajouter</button></div></div></article>').join('');
-    }
-    document.getElementById('cartBtn').addEventListener('click', openCart);
-    document.getElementById('cartClose').addEventListener('click', closeCart);
-    document.getElementById('cartOverlay').addEventListener('click', closeCart);
-    document.getElementById('checkoutBtn').addEventListener('click', checkout);
-    renderProducts(); renderCart(); updateCartCount();
-  </script>
+
+  <!-- Product detail modal -->
+  <div id="modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4">
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+    <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-white/10 bg-ink-900 shadow-2xl">
+      <button id="modal-close" class="absolute top-4 right-4 z-10 p-2 rounded-lg bg-black/40 hover:bg-black/60" aria-label="Fermer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="modal-body" class="p-6 md:p-8"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
